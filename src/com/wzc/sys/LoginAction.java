@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import org.apache.log4j.Logger;
+import javax.sql.DataSource;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -17,16 +18,23 @@ public class LoginAction extends ActionSupport {
 	private String user;
 	private String password;
 	private String name;
+	private DataSource ds;
 
+	public LoginAction(DataSource datasource) {
+		this.ds = datasource;
+	}
+	
 	public String execute() {
 		log.info("begin login.....");
 		String ret = ERROR;
 		Connection conn = null;
 
 		try {
-			String URL = "jdbc:mysql://localhost/wdb";
+/*			String URL = "jdbc:mysql://localhost/wdb";
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection(URL, "root", "mysql");
+			conn = DriverManager.getConnection(URL, "root", "mysql");*/
+
+			conn = ds.getConnection();
 			String sql = "SELECT name FROM login WHERE";
 			sql += " user = ? AND password = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -40,6 +48,8 @@ public class LoginAction extends ActionSupport {
 			}
 		} catch (Exception e) {
 			ret = ERROR;
+			e.printStackTrace();
+			log.error(e.getStackTrace());
 		} finally {
 			if (conn != null) {
 				try {
@@ -73,5 +83,13 @@ public class LoginAction extends ActionSupport {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public DataSource getDs() {
+		return ds;
+	}
+
+	public void setDs(DataSource ds) {
+		this.ds = ds;
 	}
 }
