@@ -17,7 +17,7 @@
 		if (x.value == "") {
 			x.style.border='1px solid red';
 			x.focus();
-			hint.innerHTML = "请输入用户名"; // 改变内容
+			hint.innerHTML = "★请输入用户名"; // 改变内容
 			hint.style.color = "red";
 			hint.style.fontSize= "small";
 			return false;
@@ -32,7 +32,7 @@
 		if (x.value == "") {
 			x.style.border='1px solid red';
 			x.focus();
-			hint.innerHTML = "请输入密码"; // 改变内容
+			hint.innerHTML = "★请输入密码"; // 改变内容
 			hint.style.color = "red";
 			hint.style.fontSize= "small";
 			return false;
@@ -65,10 +65,14 @@
 	<form action="loginaction" method="post" id="loginaction" name="loginaction">
 		<div id="login">
 			<h3 align="center">用户登录</h3>
-			用户名：<input type="text" name="user" id="user" placeholder="请输入用户名"/>*<br />
+			<lable for="user">用户名：</lable><input type="text" name="user" id="user" placeholder="请输入用户名"/><lable for="user" class="bz">*</lable><br />
 			<p id="userhint"></p>
-			密&nbsp;&nbsp;&nbsp;&nbsp;码：<input type="password" name="password" id="password" placeholder="请输入密码  "/>*<br />
+			
+			<lable for="password">密&nbsp;&nbsp;&nbsp;码：</lable>
+			<input type="password" name="password" id="password" placeholder="请输入密码 "/>
+			<lable for="password" class="bz">*</lable><br />
 			<p id="pswdhint"></p>
+			
 			<input type="button" value="注册" name="registebtn" onclick="registe()"/>
 			<input type="reset" value="重置">
 			<input type="submit" value="登录" onclick="return checkLogin(this.form);"/>
