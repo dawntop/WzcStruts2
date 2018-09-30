@@ -9,14 +9,13 @@
 
 <script src="jquery.js"></script>
 <script type="text/javascript">
-	onload = function ()
-    {
+	onload = function () {
        var year=new Date().getFullYear(); //获取当前年份
-         
-       var sel = document.getElementById ('birthyear');//获取select下拉列表
+
+       var sel = document.getElementById ("birthyear");//获取select下拉列表
        for ( var i = year; i > year-100; i--)//循环添加当前年份至前100年
        {
-           var option = document.createElement ('option');
+           var option = document.createElement ("option");
            option.value = i;
            var txt = document.createTextNode (i);
            option.appendChild (txt);
@@ -27,11 +26,109 @@
 		$("#birthmonth").find("option[value="+month+"]").attr("selected",true);
     }
 	
-	function checkRegiste(form) {
+	function checkNull() {
+		//check user is null
+		var x = document.getElementById("user");
+		var hint = document.getElementById("userhint");
+		if (x.value == "") {
+			x.style.border='1px solid red';
+			x.focus();
+			hint.innerHTML = "★请输入用户名"; // 改变内容
+			hint.style.color = "red";
+			hint.style.fontSize= "small";
+			return false;
+		} else {
+			x.style.border='1px solid gray';
+			hint.innerHTML = "";
+		}
+		
+		//check password is NULL
+		x = document.getElementById("password");
+		hint = document.getElementById("passwordhint");
+		if (x.value == "") {
+			x.style.border='1px solid red';
+			x.focus();
+			hint.innerHTML = "★请输入密码"; // 改变内容
+			hint.style.color = "red";
+			hint.style.fontSize= "small";
+			return false;
+		} else {
+			x.style.border='1px solid gray';
+			hint.innerHTML = "";
+		}
+		
+		//check password is NULL
+		x = document.getElementById("pswd");
+		hint = document.getElementById("pswdhint");
+		if (x.value == "") {
+			x.style.border='1px solid red';
+			x.focus();
+			hint.innerHTML = "★请输入密码"; // 改变内容
+			hint.style.color = "red";
+			hint.style.fontSize= "small";
+			return false;
+		} else {
+			x.style.border='1px solid gray';
+			hint.innerHTML = "";
+		}
 		
 		return true;
 	}
 	
+	function checkPswdSame() {
+		var x = document.getElementById("password");
+		var y = document.getElementById("pswd");
+		hint = document.getElementById("pswdhint");
+		if (x.value != y.value) {
+			x.focus();
+			hint.innerHTML = "★两次输入密码不一样"; // 改变内容
+			hint.style.color = "red";
+			hint.style.fontSize= "small";
+			return false;
+		} else {
+			hint.innerHTML = "";
+		}
+		return true;
+	}
+	
+	function isUserUse() {
+		var x = document.getElementById("user");
+		/*String url = "jdbc:mysql://localhost/WDB?user=root&password=mysql";
+		Class.forName("org.gjt.mm.mysql.Driver").newInstance();
+		Connection conn = DriverManager.getConnection(url);
+		Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+		String sql = "select * from login where user = " + x.value;
+		  ResultSet rs = stmt.executeQuery(sql);
+		while (rs.next()) {
+			var hint = document.getElementById("userhint");
+			x.focus();
+			hint.innerHTML = "★用户名已被注册，请换个用户名"; // 改变内容
+			hint.style.color = "red";
+			hint.style.fontSize= "small";
+			return false;
+		} */ 
+		
+		return true;
+	}
+	
+	function checkRegiste(form) {
+		if (false == checkNull()) {
+			return false;
+		}
+		if (false == checkPswdSame()) {
+			return false;
+		}
+		if (false == isUserUse()) {
+			return false;
+		}
+		return true;
+	}
+	
+	function updateSubmitBtn() {
+		var x = document.getElementById("isAgree");
+		var y = document.getElementById("registe");
+		y.disabled = !x.checked;
+	}
 </script>
 
 </head>
@@ -50,9 +147,12 @@
 		<form action="registeaction" method="post" id="registeaction" name="registeaction">
 		<div id="maincontext">
 			<br>
-			<lable for="user">用户名：</lable><input type="text" id= "user" name="user" /><lable for="user" class="bz">*</lable><br><br> 
-			<lable for="pswd">密码：</lable><input type="password" id= "password" name="password" /><lable for="password" class="bz">*</lable><br><br>
-			<lable for="pswd2">确认密码：</lable><input type="password" id= "pswd" name="pswd" /><lable for="pswd" class="bz">*</lable><br><br>
+			<lable for="user">用户名：</lable><input type="text" id= "user" name="user" /><lable for="user" class="bz">*</lable><br>
+			<p id="userhint"></p>
+			<lable for="pswd">密码：</lable><input type="password" id= "password" name="password" /><lable for="password" class="bz">*</lable><br>
+			<p id="passwordhint"></p>
+			<lable for="pswd2">确认密码：</lable><input type="password" id= "pswd" name="pswd" /><lable for="pswd" class="bz">*</lable><br>
+			<p id="pswdhint"></p>
 			
 			<lable for="sex">性别：</lable>
 			<input name="sex" type="radio" value="1" checked="checked"/>男
@@ -74,10 +174,10 @@
 				<option value=12>12</option>
 			</select>月<br><br>
 			
-			<input type="checkbox" id= "isAgree" />我已阅读并同意《协议》<br><br>
-			<!--  -->
+			<input type="checkbox" id= "isAgree" name="isAgree" onclick="updateSubmitBtn()"/>我已阅读并同意《协议》<br><br>
+
 			<input type="reset" value="重置">
-			<input type="submit" value="注册" onclick="return checkRegiste(this.form);"/>
+			<input type="submit" value="注册" name="registe" id="registe" disabled=true onclick="return checkRegiste(this.form);"/>
 		</div>
 		</form>
 
