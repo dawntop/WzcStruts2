@@ -25,7 +25,16 @@
            sel.appendChild (option);
        }
 
-		var month = new Date().getMonth() + 1;
+		year=<%=request.getAttribute("birthyear")%>;
+		if (null==year) {
+			year=new Date().getFullYear();
+		}
+		$("#birthyear").find("option[value="+year+"]").attr("selected",true);
+
+		var month=<%=request.getAttribute("birthmonth")%>;
+		if (null==month) {
+			month = new Date().getMonth() + 1;
+		}
 		$("#birthmonth").find("option[value="+month+"]").attr("selected",true);
 		
 		var x = document.getElementById("isAgree");
@@ -143,7 +152,8 @@
 		<div id="maincontext">
 			<br>
 			<lable for="user">用户名：</lable>
-			<input type="text" id= "user" name="user" />
+			<input type="text" id= "user" name="user" onKeyUp="value=value.replace(/[\W]/g,'')"  
+				value="${user}"/>
 			<lable for="user" class="bz">*</lable><br>
 			<p id="userhint" name="userhint" class="hint"></p>
 			<s:fielderror>
@@ -151,17 +161,17 @@
 			</s:fielderror>
 			
 			<lable for="password">密码：</lable>
-			<input type="password" id= "password" name="password" />
+			<input type="password" id= "password" name="password" value="${password}" }/>
 			<lable for="password" class="bz">*</lable><br>
 			<p id="passwordhint" name="passwordhint" class="hint"></p>
 			<lable for="pswd">确认密码：</lable>
-			<input type="password" id= "pswd" name="pswd" />
+			<input type="password" id= "pswd" name="pswd"  value="${password}"/>
 			<lable for="pswd" class="bz">*</lable><br>
 			<p id="pswdhint" name="pswdhint" class="hint"></p>
 			
 			<lable for="sex">性别：</lable>
-			<input name="sex" type="radio" value="1" checked="checked"/>男
-			<input name="sex" type="radio" value="0"/>女<br><br>
+			<input name="sex" type="radio" value="1" ${(sex==1||sex==null)?'checked':''}/>男
+			<input name="sex" type="radio" value="0" ${(sex==0)?'checked':''}/>女<br><br>
 
 			出生日期：<select id="birthyear" name="birthyear"></select>年
 			<select id="birthmonth" name="birthmonth">

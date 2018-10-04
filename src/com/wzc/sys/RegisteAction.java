@@ -1,17 +1,16 @@
 package com.wzc.sys;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.sql.DataSource;
 
 import org.apache.log4j.Logger;
 
-import com.opensymphony.xwork2.ActionSupport;
-
-public class RegisteAction extends ActionSupport {
+public class RegisteAction extends BasicAction {
 
 	private static final long serialVersionUID = 1L;
 	public static final Logger log = Logger.getLogger(RegisteAction.class.getName());
@@ -21,10 +20,10 @@ public class RegisteAction extends ActionSupport {
 	private int sex;
 	private int birthyear;
 	private int birthmonth;
-	private Connection conn = null;
 
 	public RegisteAction(DataSource datasource) throws SQLException {
-		this.conn = datasource.getConnection();
+		super(datasource);
+//		this.conn = datasource.getConnection();
 	}
 	
 	public String execute() {
@@ -64,7 +63,11 @@ public class RegisteAction extends ActionSupport {
 	
 	public void validate() {
 		super.validate();
-
+		request.setAttribute("user", user);
+		request.setAttribute("password", password);
+		request.setAttribute("sex", sex);
+		request.setAttribute("birthyear", birthyear);
+		request.setAttribute("birthmonth", birthmonth);
 		try {
 			String sql = "SELECT name FROM login WHERE";
 			sql += " user = ?";
