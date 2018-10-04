@@ -3,7 +3,7 @@
    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
    "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-	<constant name="struts.devMode" value="true" />
+	<constant name="struts.devMode" value="false" />
 	<constant name="struts.multipart.maxSize" value="1000000" />
 	<package name="helloworld" extends="struts-default">
 
@@ -39,6 +39,7 @@
          	method="execute">
          	<result name="success">/success.jsp</result>
          	<result name="error">/error.jsp</result>
+         	<result name="input">/registe.jsp?user=user</result>
       	</action>
       	
 		<action name="hello"

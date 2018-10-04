@@ -1,5 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" import="java.util.*" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page isELIgnored="false"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -24,6 +27,10 @@
 
 		var month = new Date().getMonth() + 1;
 		$("#birthmonth").find("option[value="+month+"]").attr("selected",true);
+		
+		var x = document.getElementById("isAgree");
+		var y = document.getElementById("registe");
+		y.disabled = !x.checked;
     }
 	
 	function checkNull() {
@@ -34,6 +41,17 @@
 			x.style.border='1px solid red';
 			x.focus();
 			hint.innerHTML = "★请输入用户名"; // 改变内容
+			hint.style.color = "red";
+			hint.style.fontSize= "small";
+			return false;
+		} else {
+			x.style.border='1px solid gray';
+			hint.innerHTML = "";
+		}
+		if (x.value.length >= 10) {
+			x.style.border='1px solid red';
+			x.focus();
+			hint.innerHTML = "★用户名长度大于等于10"; // 改变内容
 			hint.style.color = "red";
 			hint.style.fontSize= "small";
 			return false;
@@ -63,7 +81,7 @@
 		if (x.value == "") {
 			x.style.border='1px solid red';
 			x.focus();
-			hint.innerHTML = "★请输入密码"; // 改变内容
+			hint.innerHTML = "★请再次输入密码"; // 改变内容
 			hint.style.color = "red";
 			hint.style.fontSize= "small";
 			return false;
@@ -90,27 +108,7 @@
 		}
 		return true;
 	}
-	
-	function isUserUse() {
-		var x = document.getElementById("user");
-		/*String url = "jdbc:mysql://localhost/WDB?user=root&password=mysql";
-		Class.forName("org.gjt.mm.mysql.Driver").newInstance();
-		Connection conn = DriverManager.getConnection(url);
-		Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-		String sql = "select * from login where user = " + x.value;
-		  ResultSet rs = stmt.executeQuery(sql);
-		while (rs.next()) {
-			var hint = document.getElementById("userhint");
-			x.focus();
-			hint.innerHTML = "★用户名已被注册，请换个用户名"; // 改变内容
-			hint.style.color = "red";
-			hint.style.fontSize= "small";
-			return false;
-		} */ 
-		
-		return true;
-	}
-	
+
 	function checkRegiste(form) {
 		if (false == checkNull()) {
 			return false;
@@ -118,12 +116,9 @@
 		if (false == checkPswdSame()) {
 			return false;
 		}
-		if (false == isUserUse()) {
-			return false;
-		}
 		return true;
 	}
-	
+
 	function updateSubmitBtn() {
 		var x = document.getElementById("isAgree");
 		var y = document.getElementById("registe");
@@ -147,12 +142,22 @@
 		<form action="registeaction" method="post" id="registeaction" name="registeaction">
 		<div id="maincontext">
 			<br>
-			<lable for="user">用户名：</lable><input type="text" id= "user" name="user" /><lable for="user" class="bz">*</lable><br>
-			<p id="userhint"></p>
-			<lable for="pswd">密码：</lable><input type="password" id= "password" name="password" /><lable for="password" class="bz">*</lable><br>
-			<p id="passwordhint"></p>
-			<lable for="pswd2">确认密码：</lable><input type="password" id= "pswd" name="pswd" /><lable for="pswd" class="bz">*</lable><br>
-			<p id="pswdhint"></p>
+			<lable for="user">用户名：</lable>
+			<input type="text" id= "user" name="user" />
+			<lable for="user" class="bz">*</lable><br>
+			<p id="userhint" name="userhint" class="hint"></p>
+			<s:fielderror>
+				<s:param>user</s:param>
+			</s:fielderror>
+			
+			<lable for="password">密码：</lable>
+			<input type="password" id= "password" name="password" />
+			<lable for="password" class="bz">*</lable><br>
+			<p id="passwordhint" name="passwordhint" class="hint"></p>
+			<lable for="pswd">确认密码：</lable>
+			<input type="password" id= "pswd" name="pswd" />
+			<lable for="pswd" class="bz">*</lable><br>
+			<p id="pswdhint" name="pswdhint" class="hint"></p>
 			
 			<lable for="sex">性别：</lable>
 			<input name="sex" type="radio" value="1" checked="checked"/>男
@@ -177,7 +182,7 @@
 			<input type="checkbox" id= "isAgree" name="isAgree" onclick="updateSubmitBtn()"/>我已阅读并同意《协议》<br><br>
 
 			<input type="reset" value="重置">
-			<input type="submit" value="注册" name="registe" id="registe" disabled=true onclick="return checkRegiste(this.form);"/>
+			<input type="submit" value="注册" id="registe" name="registe" onclick="return checkRegiste(this.form);"/>
 		</div>
 		</form>
 

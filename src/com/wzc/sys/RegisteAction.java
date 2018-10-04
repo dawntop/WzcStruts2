@@ -32,20 +32,8 @@ public class RegisteAction extends ActionSupport {
 		String ret = ERROR;
 
 		try {
-			String sql = "SELECT name FROM login WHERE";
-			sql += " user = ?";
+			String sql = "INSERT INTO LOGIN(USER,PASSWORD,NAME,SEX,BIRTHDATE,REGISTEDATE) VALUES(?,?,?,?,?,NOW())";
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, user);
-			ResultSet rs = ps.executeQuery();
-
-			while (rs.next()) {
-				log.info("用户名[" + user + "]已存在");
-				ret = ERROR;
-				return ret;
-			}
-			
-			sql = "INSERT INTO LOGIN(USER,PASSWORD,NAME,SEX,BIRTHDATE,REGISTEDATE) VALUES(?,?,?,?,?,NOW())";
-			ps = conn.prepareStatement(sql);
 			ps.setString(1, user);
 			ps.setString(2, password);
 			ps.setString(3, user);
@@ -73,6 +61,31 @@ public class RegisteAction extends ActionSupport {
 		return ret;
 	}
 
+	
+	public void validate() {
+		super.validate();
+
+		try {
+			String sql = "SELECT name FROM login WHERE";
+			sql += " user = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, user);
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				log.info("用户名[" + user + "]已存在");
+				this.addFieldError("user", "用户名已存在!");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			log.error(e.getStackTrace());
+			log.info(user + "注册验证失败");
+		}
+
+		// 如果执行了addFieldError()/addActionError()等方法，则会转到input对应的页面
+	}
+	 
 	public String getUser() {
 		return user;
 	}

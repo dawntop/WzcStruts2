@@ -6,5 +6,6 @@
 </head>
 <body>
 	登录失败，错误的用户名或密码！
+	<div>${message}</div>
 </body>
 </html>
