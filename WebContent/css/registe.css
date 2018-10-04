@@ -3,7 +3,7 @@ body
 	background-position:top;
 	background-size:cover;
 	background-color:#C7EDCC;
-	text-align:center;
+	min-width:500px;
 }
 .bz {
 	color: red;
@@ -24,7 +24,7 @@ body
 #header {
 	text-align:left;
 	height:70px;
-	margin: 0px 200px auto 200px;
+	margin: 0px 10% auto 10%;
 }
 #guanggao {
 	text-align:center;
@@ -33,18 +33,22 @@ body
 	width:20%;
 	float:left;
 	background-color:#FFD700;
-	margin: auto auto auto 200px;
+	margin: auto auto auto 10%;//上 右 下 左
 }
 #maincontext {
 	font-size:20px;
 	height:650px;
-	width:58%;
+	width:60%;
+	min-width:300px;
 	float:left;
-	text-align:center;
 	background-color:#EEEEEE;
-	margin: auto 200px auto auto;
+	margin: auto 10% auto auto;
+	text-align:center;
+}
+#birthyear,#birthmonth {
+	width:75px;
 }
 #footer {
-	margin: auto 200px 0px 200px;
+	margin: 650px 10% 0px 10%;
 	text-align:center;
 }

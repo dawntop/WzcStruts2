@@ -137,70 +137,68 @@
 
 </head>
 <body>
-	<div id="container">
+	<div id="header">
+		<h1>欢迎注册</h1>
+		<hr />
+	</div>
 
-		<div id="header">
-			<h1>欢迎注册</h1>
-			<hr />
-		</div>
-
-		<div id="guanggao">
-			广<br>告<br>位<br>招<br>租<br>！
-		</div>
+	<div id="guanggao">
+		广<br>告<br>位<br>招<br>租<br>！
+	</div>
+	
+	<form action="registeaction" method="post" id="registeaction" name="registeaction">
+	<div id="maincontext">
+		<br>
+		<lable for="user">用&nbsp;&nbsp;户&nbsp;&nbsp;名：</lable>
+		<input type="text" id= "user" name="user" onKeyUp="value=value.replace(/[\W]/g,'')"  
+			value="${user}"/>
+		<lable for="user" class="bz">*</lable><br>
+		<p id="userhint" name="userhint" class="hint"></p>
+		<s:fielderror>
+			<s:param>user</s:param>
+		</s:fielderror>
 		
-		<form action="registeaction" method="post" id="registeaction" name="registeaction">
-		<div id="maincontext">
-			<br>
-			<lable for="user">用户名：</lable>
-			<input type="text" id= "user" name="user" onKeyUp="value=value.replace(/[\W]/g,'')"  
-				value="${user}"/>
-			<lable for="user" class="bz">*</lable><br>
-			<p id="userhint" name="userhint" class="hint"></p>
-			<s:fielderror>
-				<s:param>user</s:param>
-			</s:fielderror>
-			
-			<lable for="password">密码：</lable>
-			<input type="password" id= "password" name="password" value="${password}" }/>
-			<lable for="password" class="bz">*</lable><br>
-			<p id="passwordhint" name="passwordhint" class="hint"></p>
-			<lable for="pswd">确认密码：</lable>
-			<input type="password" id= "pswd" name="pswd"  value="${password}"/>
-			<lable for="pswd" class="bz">*</lable><br>
-			<p id="pswdhint" name="pswdhint" class="hint"></p>
-			
-			<lable for="sex">性别：</lable>
-			<input name="sex" type="radio" value="1" ${(sex==1||sex==null)?'checked':''}/>男
-			<input name="sex" type="radio" value="0" ${(sex==0)?'checked':''}/>女<br><br>
+		<lable for="password">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</lable>
+		<input type="password" id= "password" name="password" value="${password}" }/>
+		<lable for="password" class="bz">*</lable><br>
+		<p id="passwordhint" name="passwordhint" class="hint"></p>
+		<lable for="pswd">确认密码：</lable>
+		<input type="password" id= "pswd" name="pswd"  value="${password}"/>
+		<lable for="pswd" class="bz">*</lable><br>
+		<p id="pswdhint" name="pswdhint" class="hint"></p>
+		
+		<lable for="sex">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</lable>
+		<input name="sex" type="radio" value="1" ${(sex==1||sex==null)?'checked':''}/>男&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input name="sex" type="radio" value="0" ${(sex==0)?'checked':''}/>女<br><br>
 
-			出生日期：<select id="birthyear" name="birthyear"></select>年
-			<select id="birthmonth" name="birthmonth">
-				<option value=1>1</option>
-				<option value=2>2</option>
-				<option value=3>3</option>
-				<option value=4>4</option>
-				<option value=5>5</option>
-				<option value=6>6</option>
-				<option value=7>7</option>
-				<option value=8>8</option>
-				<option value=9>9</option>
-				<option value=10>10</option>
-				<option value=11>11</option>
-				<option value=12>12</option>
-			</select>月<br><br>
-			
-			<input type="checkbox" id= "isAgree" name="isAgree" onclick="updateSubmitBtn()"/>我已阅读并同意《协议》<br><br>
+		出生日期：<select id="birthyear" name="birthyear"></select>年
+		<select id="birthmonth" name="birthmonth">
+			<option value=1>1</option>
+			<option value=2>2</option>
+			<option value=3>3</option>
+			<option value=4>4</option>
+			<option value=5>5</option>
+			<option value=6>6</option>
+			<option value=7>7</option>
+			<option value=8>8</option>
+			<option value=9>9</option>
+			<option value=10>10</option>
+			<option value=11>11</option>
+			<option value=12>12</option>
+		</select>月<br><br>
+		
+		<input type="checkbox" id= "isAgree" name="isAgree" onclick="updateSubmitBtn()"/>我已阅读并同意《<a href="agreement.jsp">协议</a>》&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
 
-			<input type="reset" value="重置">
-			<input type="submit" value="注册" id="registe" name="registe" onclick="return checkRegiste(this.form);"/>
-		</div>
-		</form>
-
-		<div id="footer">		
-			<hr />
-			Copyright © wzc
-		</div>
-
+		<input type="reset" value="重置">
+		<input type="submit" value="注册" id="registe" name="registe" onclick="return checkRegiste(this.form);"/><br><br>
+		
+		<p id="login">我已注册，现在<a href="index.jsp">登录</a></p>
+	</div>
+	</form>
+	
+	<div id="footer">		
+		<hr />
+		Copyright © wzc
 	</div>
 </body>
 </html>
