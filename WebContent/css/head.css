@@ -1,0 +1,42 @@
+body
+{
+/* //	background-image: url(../image/duck.jpg); */
+	background-position:top;
+	background-size:cover;
+	background-color:white;
+	text-align:center;
+}
+.navbar-default {
+	width:80%;
+	margin: auto 10% auto 10%;
+	float:right;
+	text-align:center;
+	height:92px;
+	background-color:white;
+}
+.img {
+	width:82px;
+	height:90px;
+	border:0px solid red;
+	display: inline; 
+	float: left; 
+}
+.title {
+	font-style:normal;
+	font-size:50px;
+	margin:10px auto 10px 0px;
+	width:auto;
+	border:0px solid red;
+	float: left; 
+}
+
+#menu {
+	float:right;
+}
+.navbar-nav {
+}
+.dropdown-toggle {
+	font-style:normal;
+	font-size:30px;
+	margin:20px 0px auto auto;
+}

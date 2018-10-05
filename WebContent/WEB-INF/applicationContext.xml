@@ -10,8 +10,15 @@
 		<property name="password" value="mysql" />
 	</bean>
 
-	<bean id="LoginAction" class="com.wzc.sys.LoginAction" scope="prototype">
+	<bean id="BasicAction" class="com.wzc.sys.BasicAction" abstract="true">
   		<property name="ds" ref="dataSource"></property>
 	</bean>
 
+	<bean id="LoginAction" class="com.wzc.sys.LoginAction" parent="BasicAction" scope="prototype">
+	</bean>
+	
+	<bean id="RegisteAction" class="com.wzc.sys.RegisteAction" parent="BasicAction" scope="prototype">
+	</bean>
+	
+	
 </beans>

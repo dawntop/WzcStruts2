@@ -1,7 +1,6 @@
 package com.wzc.sys;
 
 import java.sql.Connection;
-import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +15,7 @@ import com.opensymphony.xwork2.ActionSupport;
  * @author Administrator
  *
  */
-public class BasicAction extends ActionSupport {
+public abstract class BasicAction extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
 	public static final Logger log = Logger.getLogger(BasicAction.class.getName());
@@ -26,8 +25,16 @@ public class BasicAction extends ActionSupport {
 	
 	public Connection conn = null;
 
-	public BasicAction(DataSource datasource) throws SQLException {
-		this.conn = datasource.getConnection();
+	public BasicAction() {
+		
+	}
+	
+	public BasicAction(DataSource datasource) {
+		try {
+			this.conn = datasource.getConnection();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		response=ServletActionContext.getResponse();
 		request= ServletActionContext.getRequest();
 	}

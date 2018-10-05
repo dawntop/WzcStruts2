@@ -2,18 +2,12 @@ package com.wzc.sys;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Calendar;
-import java.util.Date;
 
 import javax.sql.DataSource;
-
-import org.apache.log4j.Logger;
 
 public class RegisteAction extends BasicAction {
 
 	private static final long serialVersionUID = 1L;
-	public static final Logger log = Logger.getLogger(RegisteAction.class.getName());
 	
 	private String user;
 	private String password;
@@ -21,9 +15,12 @@ public class RegisteAction extends BasicAction {
 	private int birthyear;
 	private int birthmonth;
 
-	public RegisteAction(DataSource datasource) throws SQLException {
+	public RegisteAction() {
+	
+	}
+	
+	public RegisteAction(DataSource datasource) {
 		super(datasource);
-//		this.conn = datasource.getConnection();
 	}
 	
 	public String execute() {

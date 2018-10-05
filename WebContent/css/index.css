@@ -1,43 +1,26 @@
-body
-{
-	background-image: url(../image/duck.jpg);
-	background-position:top;
-	background-size:cover;
-	background-color:white;
-	text-align:center
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
 }
-#title {
-	font-style:normal;
-	font-size:60px;
-	margin:auto;
-	margin-left:auto;
-	margin-right:auto;
-	width:55%;
+
+li {
+	float: left;
 }
-#img {
-	width:82px;
-}
-#head {
-	border:0px solid red;
-	width:100%;
-}
-#login {
-	align:center;
-	width: 300px;
-	height:200px;
-	margin: 200px auto;
-	border:1px solid black;
-}
-.bz {
-	color: red;
-	font-family: "宋体", "仿宋", sans-serif;	/*若电脑不支持宋体，则用仿宋，若不支持仿宋，则在sans-serif中找*/
+
+a:link, a:visited {
+	display: block;
+	width: 120px;
 	font-weight: bold;
-	font-size: 100%;
-	font-style: italic;
-	opacity: 1; /*字体的透明度：1：默认样式，0：全透明*/ 
-	/*background-color: blue;*/
+	color: #FFFFFF;
+	background-color: #98bf21;
+	text-align: center;
+	padding: 4px;
+	text-decoration: none;
+	text-transform: uppercase;
 }
-div {
-	align:left;
-	margin: 20px auto;
+
+a:hover, a:active {
+	background-color: #7A991A;
 }

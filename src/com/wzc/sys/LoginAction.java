@@ -1,28 +1,20 @@
 package com.wzc.sys;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
-import org.apache.log4j.Logger;
-
-import com.opensymphony.xwork2.ActionSupport;
-
-public class LoginAction extends ActionSupport {
+public class LoginAction extends BasicAction {
 
 	private static final long serialVersionUID = 1L;
-	public static final Logger log = Logger.getLogger(LoginAction.class.getName());
 	
 	private String user;
 	private String password;
 	private String name;
-	private Connection conn = null;
 
-	public LoginAction(DataSource datasource) throws SQLException {
-		this.conn = datasource.getConnection();
+	public LoginAction(DataSource datasource) {
+		super(datasource);
 	}
 	
 	public String execute() {

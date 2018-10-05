@@ -1,0 +1,43 @@
+body
+{
+	background-image: url(../image/duck.jpg);
+	background-position:top;
+	background-size:cover;
+	background-color:white;
+	text-align:center
+}
+#title {
+	font-style:normal;
+	font-size:60px;
+	margin:auto;
+	margin-left:auto;
+	margin-right:auto;
+	width:55%;
+}
+#img {
+	width:82px;
+}
+#head {
+	border:0px solid red;
+	width:100%;
+}
+#login {
+	align:center;
+	width: 300px;
+	height:200px;
+	margin: 200px auto;
+	border:1px solid black;
+}
+.bz {
+	color: red;
+	font-family: "宋体", "仿宋", sans-serif;	/*若电脑不支持宋体，则用仿宋，若不支持仿宋，则在sans-serif中找*/
+	font-weight: bold;
+	font-size: 100%;
+	font-style: italic;
+	opacity: 1; /*字体的透明度：1：默认样式，0：全透明*/ 
+	/*background-color: blue;*/
+}
+div {
+	align:left;
+	margin: 20px auto;
+}

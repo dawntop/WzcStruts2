@@ -18,11 +18,11 @@
 	function update_p(num,t) {
 		var x = document.getElementById("btn");
 		if(num == t) {         
-			document.getElementById("btn").innerHTML ="我已阅读，返回上一页";         
-			document.getElementById("btn").disabled=false;     
+			x.innerHTML ="我已阅读，返回上一页";         
+			x.disabled=false;     
 		} else {        
 			printnr = t-num;         
-			document.getElementById("btn").innerHTML = "还剩余(" + printnr +")秒，返回上一页"; 
+			x.innerHTML = "还剩余(" + printnr +")秒，返回上一页"; 
 			    
 		}
 	} 
