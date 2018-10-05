@@ -1,18 +1,24 @@
 body
 {
-/* //	background-image: url(../image/duck.jpg); */
 	background-position:top;
 	background-size:cover;
-	background-color:white;
+	background-color:red;
 	text-align:center;
 }
-.navbar-default {
+.headbar {
+	margin:0px 10% auto 10%;
 	width:80%;
-	margin: auto 10% auto 10%;
+	height:20px;	
+	background-color:#F8F8F8;
+	text-align:right;
+}
+.navbar-default {
+	background-color:red;
+	width:80%;
+	margin: 0px 10% 0px 10%;
 	float:right;
 	text-align:center;
 	height:92px;
-	background-color:white;
 }
 .img {
 	width:82px;
@@ -39,4 +45,7 @@ body
 	font-style:normal;
 	font-size:30px;
 	margin:20px 0px auto auto;
+}
+.dropdown-menu {
+	overflow:visiable;
 }

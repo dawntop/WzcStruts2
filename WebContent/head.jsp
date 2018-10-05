@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>公共头部</title>
+
 <link rel="stylesheet" type="text/css" href="./css/head.css" />
 
 <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
@@ -22,16 +22,17 @@
 
 	
 </script>
-
+<title>公共头部</title>
 </head>
-
 <body>
-	<nav class="navbar navbar-default" role="navigation">
+	<div class="headbar">
+		<a href="registe.jsp" target="_black">注册</a> <a href="login.jsp" target="_parent">登录</a>
+	</div>
+	<nav class="navbar navbar-default">
 		<img class="img" src=<%=request.getContextPath() + "/image/Logo.jpg"%>></img>
 		<p class="title">聚力粮机</p>
 		<div id="menu">
-		<ul class="nav navbar-nav" onmouseover="test('showc')"
-			onmouseleave="test1('showc')">
+		<ul class="nav navbar-nav" onmouseover="test('showc')" onmouseleave="test1('showc')">
 			<li class="dropdown"><a href="#" class="dropdown-toggle"
 				data-toggle="dropdown">编程语言1 <b class="caret"></b>
 			</a>
