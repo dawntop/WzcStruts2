@@ -1,34 +1,39 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+%>
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="./css/index.css" />
-<title>安徽聚力粮机科技股份有限公司</title>
+<link rel="stylesheet" type="text/css" href="<%=basePath%>/css/index.css" />
 <script>
 function test() {
-	alert('test');
-	var x= <%=session.getAttribute("name")%>;
-	document.getElementById("w").innerHTML = "1" + x + "2";
-	alert(x);
+	alert("wzc");
 }
 
 function test2() {
-	alert('test2');
+	document.getElementById("ceshi").value = "ceshi";
+}
+
+function test3() {
+	document.getElementById("ceshi").value = "测试";
 }
 
 </script>
 </head>
-<body>
-	<iframe src="head.jsp" name="header" id="header" class="header"
-		scrolling="no"></iframe>
 
+<body>
+<iframe src="head.jsp" name="header" id="header" class="header"
+		scrolling="no"></iframe>
 
 	<div class="context">
 		<p class="w" id="w">123welcome <s:property value="name"/></p>
 		<a href="error.jsp">INDEX</a>		
 		<a onclick="test();">ceshi</a> 
-		<input type="button" value="测试" onclick="test()" onmouseover="test2()" />
+		<input type="button" id="ceshi" value="测试" onclick="test()" onmouseover="test2()" onmouseleave="test3()" />
 	</div>
+	
 </body>
 </html>
