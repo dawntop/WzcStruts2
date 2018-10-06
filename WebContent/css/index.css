@@ -1,27 +1,37 @@
 body {	
-	border:0px;
+	border:0px solid red;
 	margin:0px; 
 	padding:0px;
 }
 .header {
-	border:0px;
 	margin:0px; 
 	padding:0px;
 	width: 100%;
 	z-index:1;
 	overflow:hidden;
 	height:112px;
+	border:0px solid blue;
+	overflow:hidden;
 }
 
 .context {
+	border:0px solid black;
+	margin:0px 10% auto 10%; 
+	padding:0px;
 	background-image: url(../image/tail.jpg);
 	background-position:top;
 	background-size:cover;
 	background-color:white;
 	position:relative;
-	height:300px; 
+	height:auto; 
 	z-index:0;
 	width:80%;
-	margin:0px 10% auto 10%; 
 	color:red;
+	overflow:hidden;
 } 
+
+.w {
+	margin:0px; 
+	padding:0px;
+	
+}

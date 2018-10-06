@@ -10,7 +10,8 @@
 <link rel="stylesheet" type="text/css" href="<%=basePath%>/css/index.css" />
 <script>
 function test() {
-	alert("wzc");
+	var x=  123;
+	alert(x);
 }
 
 function test2() {
