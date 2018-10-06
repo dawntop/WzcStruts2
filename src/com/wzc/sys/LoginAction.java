@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 
 import javax.sql.DataSource;
 
+import com.wzc.common.Common;
+
 public class LoginAction extends BasicAction {
 
 	private static final long serialVersionUID = 1L;
@@ -31,6 +33,7 @@ public class LoginAction extends BasicAction {
 
 			while (rs.next()) {
 				name = rs.getString(1);
+				request.getSession().setAttribute("name", name);
 				log.info(user + "登录成功");
 				ret = SUCCESS;
 			}

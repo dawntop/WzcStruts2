@@ -10,6 +10,10 @@
 
 <script src="jquery.js"></script>
 <script type="text/javascript">
+	if (window != top) {
+		top.location.href = location.href; 
+	}
+	
 	function checkLogin(form) {
 		//check user is null
 		var x = document.getElementById("user");

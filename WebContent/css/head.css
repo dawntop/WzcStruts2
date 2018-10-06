@@ -1,9 +1,9 @@
 body
 {
-	background-position:top;
-	background-size:cover;
-	background-color:red;
+	background-color:blue;
 	text-align:center;
+	overflow-x:scroll;
+	overflow-y:hidden;
 }
 .headbar {
 	margin:0px 10% auto 10%;
@@ -12,6 +12,25 @@ body
 	background-color:#F8F8F8;
 	text-align:right;
 }
+
+.headbarleft {
+	margin:0px auto auto 0px;
+	width:80%;
+	height:20px;	
+	background-color:#F8F8F8;
+	text-align:left;
+	float:left;
+}
+
+.headbarright {
+	margin:0px 0px auto auto;
+	width:20%;
+	height:20px;	
+	background-color:#F8F8F8;
+	text-align:right;
+	float:right;
+}
+
 .navbar-default {
 	background-color:red;
 	width:80%;
@@ -48,4 +67,4 @@ body
 }
 .dropdown-menu {
 	overflow:visiable;
-}
+} 

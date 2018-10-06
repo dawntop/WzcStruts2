@@ -26,5 +26,8 @@
 	<listener>
   		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-	
+	<session-config>
+		<!-- 　session-timeout元素用来指定默认的会话超时时间间隔，以分钟为单位。该元素值必须为整数。如果session-timeout元素的值为零或负数，则表示会话将永远不会超时。 -->
+		<session-timeout>1</session-timeout> 
+	</session-config>
 </web-app>

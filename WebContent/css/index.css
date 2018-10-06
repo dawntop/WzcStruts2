@@ -9,8 +9,8 @@ body {
 	padding:0px;
 	width: 100%;
 	z-index:1;
-	height:auto;
 	overflow:hidden;
+	height:112px;
 }
 
 .context {
@@ -23,7 +23,7 @@ body {
 	z-index:0;
 	width:80%;
 	margin:0px 10% auto 10%; 
-}
+} 
 
 ul {
 	list-style-type: none;
